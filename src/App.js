@@ -24,15 +24,15 @@ function App() {
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]} >
       <h3>email: {loggedInUser.email}</h3>
-      
+
       <Router>
-      <Header></Header>
+        <Header></Header>
         <Switch>
           <Route path="/shop">
-                <Shop></Shop>
+            <Shop></Shop>
           </Route>
           <Route path="/review">
-              <Review></Review>
+            <Review></Review>
           </Route>
           <PrivateRoute path="/inventory">
             <Inventory></Inventory>
@@ -47,14 +47,14 @@ function App() {
             <Shop></Shop>
           </Route>
           <Route path="/product/:productKey">
-             <ProductDetail></ProductDetail>
+            <ProductDetail></ProductDetail>
           </Route>
           <Route path="/*">
-                <NotFound></NotFound>
+            <NotFound></NotFound>
           </Route>
         </Switch>
       </Router>
-      
+
     </UserContext.Provider>
   );
 }
