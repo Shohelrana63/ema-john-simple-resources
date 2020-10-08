@@ -6,13 +6,13 @@ import { addToDatabaseCart, getDatabaseCart } from '../../utilities/databaseMana
 import { Link } from 'react-router-dom';
 
 const Shop = () => {
-    // const first10 = fakeData.slice(0,10);
+
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://nameless-springs-21718.herokuapp.com/products')
 
             .then(res => res.json())
             .then(data => setProducts(data))
@@ -21,7 +21,7 @@ const Shop = () => {
     useEffect(() => {
         const savedCart = getDatabaseCart();
         const productKeys = Object.keys(savedCart);
-        fetch('http://localhost:5000/productsByKeys', {
+        fetch('https://nameless-springs-21718.herokuapp.com/productsByKeys', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -22,7 +22,7 @@ const Review = () => {
         const productKeys = Object.keys(savedCart);
 
 
-        fetch('http://localhost:5000/productsByKeys', {
+        fetch('https://nameless-springs-21718.herokuapp.com/productsByKeys', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
