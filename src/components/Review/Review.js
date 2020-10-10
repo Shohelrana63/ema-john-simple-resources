@@ -30,7 +30,14 @@ const Review = () => {
             body: JSON.stringify(productKeys)
         })
             .then(res => res.json())
-            .then(data => setCart(data))
+            .then(data => {
+                const cartProducts = productKeys.map(key => {
+                    const product = data.find(product => product.key === key);
+                    product.quantity = savedCart[key];
+                    return product;
+                });
+                setCart(cartProducts);
+            });
     }, []);
 
     let thankyou;
@@ -50,7 +57,7 @@ const Review = () => {
             </div>
             <div className="cart-container">
                 <Cart cart={cart}>
-                    <button onClick={handleProceedCheckout} className="main-button">Proceed Checkout</button>
+                    <button style={{ height: '50px' }} onClick={handleProceedCheckout} className="main-button">Proceed Checkout</button>
                 </Cart>
             </div>
 

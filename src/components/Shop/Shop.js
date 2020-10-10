@@ -9,14 +9,13 @@ const Shop = () => {
 
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
-
-
+    const [search, setSearch] = useState('');
+    console.log(search);
     useEffect(() => {
-        fetch('https://nameless-springs-21718.herokuapp.com/products')
-
+        fetch('https://nameless-springs-21718.herokuapp.com/products?search=' + search)
             .then(res => res.json())
             .then(data => setProducts(data))
-    }, [])
+    }, [search])
 
     useEffect(() => {
         const savedCart = getDatabaseCart();
@@ -32,6 +31,10 @@ const Shop = () => {
             .then(data => setCart(data))
 
     }, [])
+
+    const handleSearch = event => {
+        setSearch(event.target.value);
+    }
 
 
     const handleAddProduct = (product) => {
@@ -57,7 +60,7 @@ const Shop = () => {
     return (
         <div className="twin-container">
             <div className="product-container">
-
+                <input type="text" onBlur={handleSearch} className="product-search" />
                 {
                     products.map(pd => <Product
                         key={pd.key}

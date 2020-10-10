@@ -8,6 +8,7 @@ const ProductDetail = () => {
     const { productKey } = useParams();
     const [loading, setLoading] = useState(true);
     const [product, setProduct] = useState({});
+    document.title = "product detail";
 
     useEffect(() => {
         fetch('https://nameless-springs-21718.herokuapp.com/product/' + productKey)
